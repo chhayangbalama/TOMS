@@ -1,4 +1,3 @@
-
 <?php
     // Retrieve form data
     $fullname = $_POST['fullname'];
@@ -29,3 +28,4 @@
 		}
 	}
 ?>
+
