@@ -37,16 +37,16 @@ if (!isset($_SESSION['fullname'])) {
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" href="userdash.php">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
           <li class="nav-item"><a class="nav-link" href="payment.html">Payment</a></li>
-          <li class="nav-item"><a class="nav-link" href="notice1.html">Notice</a></li>
+          <li class="nav-item"><a class="nav-link" href="notice1.php">Notice</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">More</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="trafficrule.html">Traffic Rules</a></li>
-              <li><a class="dropdown-item" href="trafficsign.html">Traffic Signs</a></li>
-              <li><a class="dropdown-item" href="helpline.html">Traffic Helplines</a></li>
-              <li><a class="dropdown-item" href="drivingexam.html">Model Questions</a></li>
+              <li><a class="dropdown-item" href="trafficrule.php">Traffic Rules</a></li>
+              <li><a class="dropdown-item" href="trafficsign.php">Traffic Signs</a></li>
+              <li><a class="dropdown-item" href="helpline.php">Traffic Helplines</a></li>
+              <li><a class="dropdown-item" href="drivingexam.php">Model Questions</a></li>
               <hr class="dropdown-divider">
               <li><a class="dropdown-item" href="complain.html">Complain</a></li>
             </ul>
@@ -85,7 +85,7 @@ if (!isset($_SESSION['fullname'])) {
         <div class="card-body vstack">
           <a href="payment.html"><img class="card-img-top" src="img/payment.jpeg" alt="payment image">
             <h3 class="card-title fw-bold">Payment</h3></a>
-          <p class="card-text">Pay your e-challan fine here.</p>
+          <p class="card-text">Pay your e-chit fine here.</p>
         </div>
       </article>
       <article class="card col-lg-3">

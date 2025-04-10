@@ -21,7 +21,7 @@
 			// show pop-up message
 			echo '<script>alert("Complain sent!");</script>';
 			// redirect to login page
-			echo '<script>window.location.href = "userdash.html";</script>';
+			echo '<script>window.location.href = "userdash.php";</script>';
 		} else {
 			echo "<script>alert('Error in sending complain'); window.location.href='complain.html';</script>";
 			//echo "Error in registration";

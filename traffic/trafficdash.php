@@ -1,3 +1,13 @@
+<?php
+session_start(); // Start the session
+
+// Check if the user is logged in
+if (!isset($_SESSION['email'])) {
+    header("Location: login.html"); // Redirect to login page if not logged in
+    exit();
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -13,17 +23,20 @@
     body {
       padding-top: 81px;
     }
-    .video{
+
+    .video {
       padding-left: 150px;
     }
   </style>
 </head>
+
 <body>
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg bg-light fixed-top">
-    <div class=" ps-5 justify-content-center align-items-center container-fluid">
-      <a href="trafficdash.html">
+    <div class="ps-5 justify-content-center align-items-center container-fluid">
+      <a href="trafficdash.php">
         <img src="img/logo.jpg" class="rounded-circle" alt="logo" style="height:65px;">
-        <a class="navbar-brand" href="trafficdash.html">TMS</a>
+        <a class="navbar-brand" href="trafficdash.php">TMS</a>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,40 +45,38 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ps-2">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Home</a>
+            <a class="nav-link" aria-current="page" href="trafficdash.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About Us</a>
+            <a class="nav-link" href="about.php">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="efine.html">E-Chit</a>
+            <a class="nav-link" href="efine.php">E-Chit</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="notice1.html">Notice</span></a>
+            <a class="nav-link" href="notice1.php">Notice</a>
           </li>
-
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               More
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="trafficrule.html">Traffic Rules</a></li>
-              <li><a class="dropdown-item" href="trafficsign.html">Traffic Signs</a></li>
-              <li><a class="dropdown-item" href="helpline.html">Traffic Helplines</a></li>
-            
-             
-            
-
+              <li><a class="dropdown-item" href="trafficrule.php">Traffic Rules</a></li>
+              <li><a class="dropdown-item" href="trafficsign.php">Traffic Signs</a></li>
+              <li><a class="dropdown-item" href="helpline.php">Traffic Helplines</a></li>
             </ul>
           </li>
         </ul>
       </div>
     </div>
-    <div class=" text-end px-5 mx-4">
-      <a href="login.html"  >
-          <button type="button" class="btn btn-danger btn-sm">Logout</button>
-      </a>
+    <div class="d-flex align-items-center">
+      <div class="profile-section">
+  <span class="profile-name">👮‍♂️<?php echo $_SESSION['fullname']; ?></span>
   </div>
+  <a href="logout.php">
+    <button type="button" class="btn btn-danger btn-sm">Logout</button>
+  </a>
+</div>
   </nav>
 
   <div class="alert alert-primary justify-content-center text-center" role="alert">
@@ -75,6 +86,7 @@
   <div class="container-fluid">
     <div class="col-sm-12">
 
+      <!-- Carousel -->
       <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="false">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
@@ -88,30 +100,14 @@
           <div class="carousel-item active">
             <img src="https://english.onlinekhabar.com/wp-content/uploads/2018/08/Traffic-Island-1.jpg"
               class="d-block w-100" style="height: 400px;" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h5></h5>
-              <p></p>
-
-            </div>
           </div>
           <div class="carousel-item">
-            <img
-              src="https://content.unops.org/photos/News-and-Stories/Features/_image1800x900/Nepal-Go_Pro-Police-John-Rae-_87A6164.jpg"
+            <img src="https://content.unops.org/photos/News-and-Stories/Features/_image1800x900/Nepal-Go_Pro-Police-John-Rae-_87A6164.jpg"
               class="d-block w-100" style="height: 400px;" alt="traffic police">
-            <div class="carousel-caption d-none d-md-block">
-              <h5></h5>
-              <p></p>
-
-            </div>
           </div>
           <div class="carousel-item">
             <img src="https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2018/08/Traffic-jam.jpg"
               class="d-block w-100" style="height: 400px;" alt="traffic police">
-            <div class="carousel-caption d-none d-md-block">
-              <h5></h5>
-              <p></p>
-
-            </div>
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
@@ -128,8 +124,7 @@
     </div>
   </div>
 
-
-
+  <!-- Features Section -->
   <section class="px-3 py-3 py-lg-5">
     <h2 class="visually-hidden">Features</h2>
     <div class="gap-3 row gap-lg-5 justify-content-center">
@@ -137,7 +132,6 @@
         <div class="gap-2 card-body vstack">
           <a href="trafficsign.html">
             <img class="card-img-top" src="img/traffic.jpg" alt="Card image cap">
-            <i class=""></i>
             <h3 class="card-title fw-bold">Traffic Signs</h3>
           </a>
           <p class="card-text">More than 100+ traffic signs available...</p>
@@ -147,10 +141,9 @@
         <div class="gap-2 card-body vstack">
           <a href="trafficrule.html">
             <img class="card-img-top" src="img/trafficrules.jpg" alt="Card image cap">
-            <i class=""></i>
             <h3 class="card-title fw-bold">Traffic Rules</h3>
           </a>
-          <p class="card-text">Read different rules of traffic </p>
+          <p class="card-text">Read different rules of traffic</p>
         </div>
       </article>
 
@@ -158,51 +151,40 @@
         <div class="gap-2 card-body vstack">
           <a href="https://betelgeuse.dribbcast.com/proxy/trafficradio?mp=/stream">
             <img class="card-img-top" src="img/metrofm1.jpg" alt="Card image cap">
-            <i class=""></i>
             <h3 class="card-title fw-bold">Metro FM</h3>
           </a>
-          <p class="card-text"> We will lunch different new programs....</p>
+          <p class="card-text">We will launch different new programs....</p>
         </div>
       </article>
-      
-    
     </div>
   </section>
 
-  <div class="video  ml-0">
-    <iframe class="mb-3 " width="380" height="300" src="https://www.youtube.com/embed/re5eUZPadI4" style="border-color: rgb(33, 202, 67);">
-    </iframe>
+  <!-- Videos Section -->
+  <div class="video ml-0">
+    <iframe class="mb-3" width="380" height="300" src="https://www.youtube.com/embed/re5eUZPadI4"
+      style="border-color: rgb(33, 202, 67);"></iframe>
 
-    <iframe class="mb-3 mx-5" width="380" height="300" src="https://www.youtube.com/embed/dZ8gRSKqIcY">
-    </iframe>
+    <iframe class="mb-3 mx-5" width="380" height="300" src="https://www.youtube.com/embed/dZ8gRSKqIcY"></iframe>
 
-    <iframe class="mb-3" width="380" height="300" src="https://www.youtube.com/embed/TjNysHt8bZg">
-    </iframe>
+    <iframe class="mb-3" width="380" height="300" src="https://www.youtube.com/embed/TjNysHt8bZg"></iframe>
   </div>
 
-
-  
-
+  <!-- Footer -->
   <div class="d-flex flex-column flex-sm-row justify-content-center py-0 my-0 border-top">
     <p class="my-4">© 2025 TMS, All rights reserved.</p>
     <ul class="list-unstyled d-flex my-4">
-
       <li class="ms-3"><a href="#"><i class="bi bi-facebook" width="100" height="100"></i><span
-            class="visually-hidden">Facebook
-            group</span></a></li>
-      <li class="ms-3"><a href="#"><i class="bi bi-instagram"></i><span class="visually-hidden">Instagram
-            page</span></a></li>
-      <li class="ms-3"><a href="#"><i class="bi bi-twitter"></i><span class="visually-hidden">Twitter
-            account</span></a></li>
-      <li class="ms-3"><a href="#"><i class="bi bi-youtube"></i><span class="visually-hidden">Youtube
-            channel</span></a></li>
+            class="visually-hidden">Facebook group</span></a></li>
+      <li class="ms-3"><a href="#"><i class="bi bi-instagram"></i><span class="visually-hidden">Instagram page</span></a></li>
+      <li class="ms-3"><a href="#"><i class="bi bi-twitter"></i><span class="visually-hidden">Twitter account</span></a></li>
+      <li class="ms-3"><a href="#"><i class="bi bi-youtube"></i><span class="visually-hidden">YouTube channel</span></a></li>
     </ul>
   </div>
-  </footer>
-  </div>
 
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
 </body>
+
 </html>

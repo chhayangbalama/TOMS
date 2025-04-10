@@ -1,3 +1,12 @@
+<?php
+session_start(); // Start the session
+
+// Check if the user is logged in
+if (!isset($_SESSION['email'])) {
+    header("Location: login.html"); // Redirect to login page if not logged in
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,13 +48,13 @@
             <a class="nav-link" aria-current="page" href="trafficdash.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="about.php">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="efine.html">E-Chit</a>
+            <a class="nav-link" href="efine.php">E-Chit</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="notice1.html">Notice<span class="badge bg-danger"></span></a>
+            <a class="nav-link" href="notice1.php">Notice<span class="badge bg-danger"></span></a>
           </li>
 
           <li class="nav-item dropdown">
@@ -53,20 +62,21 @@
               More
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="trafficrule.html">Traffic Rules</a></li>
-              <li><a class="dropdown-item" href="trafficsign.html">Traffic Signs</a></li>
-              <li><a class="dropdown-item" href="#">Traffic Helplines</a></li>
-              <li><a class="dropdown-item" href="#">Complain</a></li>
+              <li><a class="dropdown-item" href="trafficrule.php">Traffic Rules</a></li>
+              <li><a class="dropdown-item" href="trafficsign.php">Traffic Signs</a></li>
+              <li><a class="dropdown-item" href="helpline.php">Traffic Helplines</a></li>
             </ul>
           </li>
         </ul>
       </div>
     </div>
-    <div class=" text-end px-5 mx-4">
-      <a href="login.html">
-        <button type="button" class="btn btn-danger btn-sm">Logout</button>
-      </a>
-    </div>
+    
+    <div class="d-flex align-items-center">
+          <div class="profile-section">
+            <!-- <img src="img/user.jpg" alt="Profile" class="profile-avatar"> -->
+            <span class="profile-name">👤 <?php echo $_SESSION['fullname']; ?></span>
+          </div>
+          <a href="logout.php" class="btn btn-danger btn-sm">Logout</a>
   </nav>
 
   <div class="alert alert-primary justify-content-center text-center" role="alert">
@@ -82,7 +92,6 @@
               <h2 class="text-center mb-2"><b>E-Chit</b></h2>
 
               <form action="create_pdf.php" method="POST">
-                <form action="send_notification.php" method="POST">
                 <div class=" form-outline mb-4">
                   <input type="text" name="name" id="form3Example1cg" class="form-control" placeholder="Enter Name" />
                 </div>

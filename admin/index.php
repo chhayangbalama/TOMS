@@ -24,7 +24,7 @@
            
                 <li> <img src="img/dashboard1.jpg" style="height:35px; width:40px" alt="">&nbsp; <span>Dashboard</span> </li>
             </a>
-            <a href="user.php">
+            <a href="user.html">
                 <li><img src="img/user0.png" style="height:45px"alt="">&nbsp;<span>User</span> </li>
             </a>
             <a href="traffic2.php">
@@ -51,7 +51,7 @@
         <div class="content">
            <div class="heads" style="padding:20px; text-color:red"><h1>Dashboard</h1></div> 
             <div class="cards">
-                <a href="user.html">
+                <a href="user.php">
                     <div class="card">
                         <div class="box">
                             <h1>
