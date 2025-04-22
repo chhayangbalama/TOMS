@@ -25,9 +25,9 @@ $fullname = $_SESSION['fullname'];
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg bg-light fixed-top">
+<nav class="navbar navbar-expand-lg bg-light fixed-top">
     <div class="ps-5 justify-content-center align-items-center container-fluid">
-      <a href="trafficdash.php">
+      <a href="userdash.php">
         <img src="img/logo.jpg" class="rounded-circle" alt="logo" style="height:65px;">
         <a class="navbar-brand" href="trafficdash.php">TMS</a>
       </a>
@@ -46,14 +46,13 @@ $fullname = $_SESSION['fullname'];
             <a class="nav-link" href="about.php">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="payment.php">Payment</a>
+            <a class="nav-link" href="efine.php">E-chit</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="notice1.php">Notice</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
+                    <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               More
             </a>
             <ul class="dropdown-menu">
@@ -67,7 +66,7 @@ $fullname = $_SESSION['fullname'];
         <div class="d-flex align-items-center">
           <div class="profile-section">
             <!-- <img src="img/user.jpg" alt="Profile" class="profile-avatar"> -->
-            <span class="profile-name">👤 <?php echo $_SESSION['fullname']; ?></span>
+            <span class="profile-name">👮‍♂️<?php echo $_SESSION['fullname']; ?></span>
           </div>
           <a href="logout.php" class="btn btn-danger btn-sm">Logout</a>
         </div>
@@ -75,18 +74,19 @@ $fullname = $_SESSION['fullname'];
     </div>
   </nav>
 
-  <div class="alert alert-primary justify-content-center text-center" role="alert">
+
+  <!-- <div class="alert alert-primary justify-content-center text-center" role="alert">
     NOTICE
-  </div>
+  </div> -->
 
   <div class="container main-body shadow my-3 py-4">
     <div class="col-ms-6">
       <h3><b>Notice</b></h3>
       <hr class="dropdown-divider"><br>
-      <a href="notice2.html"><h6>Metro traffic to manage street lights in the capital</h6></a>
-      <a href="notice4.html"><h6>Traffic Police Division collects over Rs 310 million revenue in fine</h6></a>
-      <a href="notice3.html"><h6>Precaution for Motorists</h6></a>
-      <a href="notice5.html"><h6>Important Notice</h6></a>
+      <a href="notice2.php"><h6>Metro traffic to manage street lights in the capital</h6></a>
+      <a href="notice4.php"><h6>Traffic Police Division collects over Rs 310 million revenue in fine</h6></a>
+      <a href="notice3.php"><h6>Precaution for Motorists</h6></a>
+      <a href="notice5.php"><h6>Important Notice</h6></a>
     </div>
   </div>
 

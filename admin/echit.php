@@ -1,4 +1,11 @@
 <?php
+session_start();
+if (!isset($_SESSION['fullname'])) {
+    header("Location: login.php");
+    exit();
+}
+?>
+<?php
 // Connect to MySQL database
 $conn = mysqli_connect("localhost", "root", "", "tms");
 
@@ -49,6 +56,14 @@ if (!$conn) {
 </head>
 
 <body>
+<nav class="navbar navbar-expand-lg bg-light fixed-top">
+<div class="d-flex align-items-center">
+          <div class="profile-section">
+            <!-- <img src="img/user.jpg" alt="Profile" class="profile-avatar"> -->
+            <span class="profile-name">👤 <?php echo $_SESSION['fullname']; ?></span>
+          </div>
+          </div>
+          </nav>
   <div class="side-menu">
     <div class="brand-name">
       <a href="index.php">
@@ -58,7 +73,7 @@ if (!$conn) {
     </div><br><br>
 
     <ul>
-      <a href="index.php">
+      <a href="admindash.php">
         <li><img src="img/dashboard1.jpg" style="height:35px; width:40px" alt="">&nbsp; <span>Dashboard</span></li>
       </a>
       <a href="user.php">
@@ -67,10 +82,11 @@ if (!$conn) {
       <a href="traffic2.php">
         <li><img src="img/traffic2.jpg" style="height:40px; width:40px" alt="">&nbsp;<span>Traffic</span></li>
       </a>
+      <a href="payment-details.php"><li><img src="payment.jpeg" style="height:40px; width:40px" alt="">&nbsp;<span>Payment</span></li></a>
       <a href="echit.php">
         <li><img src="img/table0.png" style="height:40px; width:40px" alt="">&nbsp;<span>E-chit</span></li>
       </a>
-      <a href="complain.html">
+      <a href="complain.php">
         <li><img src="img/complain.jpg" style="height:40px; width:40px" alt="">&nbsp;<span>Complain</span></li>
       </a>
       <a href="login.html">

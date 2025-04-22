@@ -1,0 +1,9 @@
+Array
+(
+    [pidx] => danQ6TmgsSCGgbeFNBVWAb
+    [total_amount] => 50000
+    [status] => Completed
+    [transaction_id] => 3SjgYcYpDJECoY7iFxBqNe
+    [fee] => 0
+    [refunded] => 
+)

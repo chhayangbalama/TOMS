@@ -10,7 +10,7 @@
 		echo "$conn->connect_error";
 		die("Connection Failed : ". $conn->connect_error);
 	} else {
-		$stmt = $conn->prepare("insert into user(fullname, email, password) values(?, ?, ?)");
+		$stmt = $conn->prepare("insert into admin(fullname, email, password) values(?, ?, ?)");
 		$stmt->bind_param("sss", $fullname, $email, $password);
 		$execval = $stmt->execute();
 		$stmt->close();

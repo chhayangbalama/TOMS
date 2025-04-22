@@ -4,27 +4,33 @@ $conn = mysqli_connect("localhost", "root", "", "tms");
 
 // Check connection
 if (!$conn) {
-  die("Connection failed: " . mysqli_connect_error());
+    die("Connection failed: " . mysqli_connect_error());
 }
 
-// Check if the ID parameter is set
-if (isset($_POST["id"])) {
-  $id = $_POST["id"];
+// Check if the email parameter is set
+if (isset($_POST["email"])) {
+    $email = $_POST["email"];
 
-  // Validate the ID parameter
-  if (!is_numeric($id)) {
-    die("Invalid ID parameter");
-  }
+    // Validate email format
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        die("Invalid email format.");
+    }
 
-  // Construct the DELETE query and execute it
-  $sql = "DELETE FROM user WHERE id = $id";
-  if (mysqli_query($conn, $sql)) {
-    echo "<script>alert('Record deleted sucessfully'); window.location.href='user.php';</script>";
-  } else {
-    echo "Error deleting record: " . mysqli_error($conn);
-  }
+    // Use prepared statement to prevent SQL injection
+    $stmt = mysqli_prepare($conn, "DELETE FROM user WHERE email = ?");
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, "s", $email);
+        if (mysqli_stmt_execute($stmt)) {
+            echo "<script>alert('User with email $email deleted successfully.'); window.location.href='user.php';</script>";
+        } else {
+            echo "Error deleting user: " . mysqli_stmt_error($stmt);
+        }
+        mysqli_stmt_close($stmt);
+    } else {
+        echo "Failed to prepare SQL statement.";
+    }
 } else {
-  echo "No ID parameter specified";
+    echo "No email parameter specified.";
 }
 
 // Close MySQL database connection

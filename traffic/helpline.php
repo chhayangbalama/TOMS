@@ -46,7 +46,7 @@ $fullname = isset($_SESSION['user_fullname']) ? $_SESSION['user_fullname'] : 'Gu
                         <a class="nav-link" href="about.php">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="payment.php">Payment</a>
+                        <a class="nav-link" href="efine.php">E-chit</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="notice1.php">Notice</a>
@@ -69,7 +69,7 @@ $fullname = isset($_SESSION['user_fullname']) ? $_SESSION['user_fullname'] : 'Gu
             <div class="d-flex align-items-center">
           <div class="profile-section">
             <!-- <img src="img/user.jpg" alt="Profile" class="profile-avatar"> -->
-            <span class="profile-name">👤 <?php echo $_SESSION['fullname']; ?></span>
+            <span class="profile-name">👮‍♂️ <?php echo $_SESSION['fullname']; ?></span>
           </div>
           <a href="logout.php" class="btn btn-danger btn-sm">Logout</a>
         </div>

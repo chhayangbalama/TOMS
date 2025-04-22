@@ -38,7 +38,7 @@ if (!isset($_SESSION['fullname'])) {
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" href="trafficdash.php">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
-          <li class="nav-item"><a class="nav-link" href="payment.html">Payment</a></li>
+          <li class="nav-item"><a class="nav-link" href="efine.php">E-chit</a></li>
           <li class="nav-item"><a class="nav-link" href="notice1.php">Notice</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">More</a>
@@ -53,7 +53,7 @@ if (!isset($_SESSION['fullname'])) {
         <div class="d-flex align-items-center">
           <div class="profile-section">
             <!-- <img src="img/user.jpg" alt="Profile" class="profile-avatar"> -->
-            <span class="profile-name">👤 <?php echo $_SESSION['fullname']; ?></span>
+            <span class="profile-name">👮‍♂️ <?php echo $_SESSION['fullname']; ?></span>
           </div>
           <a href="logout.php" class="btn btn-danger btn-sm">Logout</a>
           </div>

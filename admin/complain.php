@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['fullname'])) {
+    header("Location: login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +17,14 @@
 </head>
 
 <body>
+<nav class="navbar navbar-expand-lg bg-light fixed-top">
+<div class="d-flex align-items-center">
+          <div class="profile-section">
+            <!-- <img src="img/user.jpg" alt="Profile" class="profile-avatar"> -->
+            <span class="profile-name">👤 <?php echo $_SESSION['fullname']; ?></span>
+          </div>
+          </div>
+          </nav>
     <div class="side-menu">
         <div class="brand-name">
             <img src="img/logo.jpg" class="rounded-circle" alt="logo" style="height:65px; border-radius: 50px;">&nbsp;
@@ -17,7 +32,7 @@
         </div><br>
 
         <ul>
-                <a href="index.php">
+                <a href="admindash.php">
                 <li> <img src="img/dashboard1.jpg" style="height:35px; width:40px" alt="">&nbsp; <span>Dashboard</span> </li>
                 </a>
                 <a href="user.php">
@@ -26,6 +41,7 @@
                 <a href="traffic2.php">
                     <li><img src="img/traffic2.jpg"style="height:40px; width:40px" alt="">&nbsp;<span>Traffic</span> </li>
                 </a>
+                <a href="payment-details.php"><li><img src="payment.jpeg" style="height:40px; width:40px" alt="">&nbsp;<span>Payment</span></li></a>
                 <a href="echit.php">
                     <li><img src="img/table0.png" style="height:40px; width:40px" alt="">&nbsp;<span>E-chit</span> </li>
                 </a>
@@ -75,7 +91,6 @@
                             while ($row = mysqli_fetch_assoc($result)) {
                               // echo "<tr><td>" . $row["id"] . "</td><td>" . $row["fullname"] . "</td><td>" . $row["email"] . "</td><td>" . $row["password"] . "</td><td>" . $row["batchnumber"] . "</td></tr>";
                               echo "<tr>
-                                      <td>" . $row["id"] . "</td>
                                       <td>" . $row["name"] . "</td>
                                       <td>" . $row["email"] . "</td>
                                       <td>" . $row["subject"] . "</td>

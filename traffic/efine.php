@@ -14,50 +14,140 @@ if (!isset($_SESSION['email'])) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>eFine</title>
+  <title>E-Fine</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <!-- Add Khalti CSS -->
+  <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
 
   <style>
     body {
       padding-top: 81px;
     }
 
-    .fine {
-      height: 400px;
+    .form-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-title {
+      text-align: center;
       margin-bottom: 30px;
-      padding-bottom: 20px;
-      background-image: url("");
+      color: #0d6efd;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      font-weight: 500;
+      color: #333;
+    }
+
+    .form-control {
+      border-radius: 5px;
+      border: 1px solid #ced4da;
+      padding: 10px;
+    }
+
+    .form-control:focus {
+      border-color: #0d6efd;
+      box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    }
+
+    .btn-submit {
+      background-color: #0d6efd;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-weight: 500;
+    }
+
+    .btn-submit:hover {
+      background-color: #0b5ed7;
+    }
+
+    .required-field::after {
+      content: " *";
+      color: red;
+    }
+
+    .payment-options {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #dee2e6;
+      border-radius: 5px;
+      background-color: #f8f9fa;
+    }
+
+    .payment-title {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .khalti-button {
+      background-color: #5D2E8E;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .khalti-button:hover {
+      background-color: #4a2472;
+    }
+
+    .khalti-logo {
+      height: 20px;
     }
   </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg bg-light fixed-top ">
-    <div class=" ps-5 justify-content-center align-items-center container-fluid">
-      <img src="logo.jpg" class="rounded-circle" alt="logo" style="height:65px;">
-      <a class="navbar-brand" href="#">TMS</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg bg-light fixed-top">
+    <div class="ps-5 justify-content-center align-items-center container-fluid">
+      <a href="userdash.php">
+        <img src="img/logo.jpg" class="rounded-circle" alt="logo" style="height:65px;">
+        <a class="navbar-brand" href="trafficdash.php">TMS</a>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ps-2">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="trafficdash.html">Home</a>
+            <a class="nav-link" href="trafficdash.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.php">About</a>
+            <a class="nav-link" href="about.php">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="efine.php">E-Chit</a>
+            <a class="nav-link active" href="efine.php">E-Fine</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="notice1.php">Notice<span class="badge bg-danger"></span></a>
+            <a class="nav-link" href="notice1.php">Notice</a>
           </li>
-
-          <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               More
             </a>
@@ -68,175 +158,122 @@ if (!isset($_SESSION['email'])) {
             </ul>
           </li>
         </ul>
-      </div>
-    </div>
-    
-    <div class="d-flex align-items-center">
+
+        <div class="d-flex align-items-center">
           <div class="profile-section">
             <!-- <img src="img/user.jpg" alt="Profile" class="profile-avatar"> -->
-            <span class="profile-name">👤 <?php echo $_SESSION['fullname']; ?></span>
+            <span class="profile-name">👮‍♂️<?php echo $_SESSION['fullname']; ?></span>
           </div>
           <a href="logout.php" class="btn btn-danger btn-sm">Logout</a>
-  </nav>
-
-  <div class="alert alert-primary justify-content-center text-center" role="alert">
-    <b>E-Chit</b>
-  </div>
-
-  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-    <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-9 col-lg-7 col-xl-6 py-3 mb-5">
-          <div class="card" style="border-radius: 5px;">
-            <div class="card-body">
-              <h2 class="text-center mb-2"><b>E-Chit</b></h2>
-
-              <form action="create_pdf.php" method="POST">
-                <div class=" form-outline mb-4">
-                  <input type="text" name="name" id="form3Example1cg" class="form-control" placeholder="Enter Name" />
-                </div>
-
-                <div class="form-outline mb-4">
-                  <input type="email" name="email" id="form3Example3cg" class="form-control" placeholder="Email" />
-                </div>
-
-                <div class="md-form md-outline input-with-post-icon datepicker mb-4">
-                  <input placeholder="Select date" type="date" name="date" id="example" class="form-control">
-                </div>
-
-                <div class="form-outline mb-4">
-                  <input type="text" name="vehicle_number" id="form3Example4cg" class="form-control"
-                    placeholder="vehicle no." />
-                </div>
-
-                <div class="form-outline mb-4">
-                  <input type="text" name="license_number" id="form3Example4cdg" class="form-control "
-                    placeholder="Licence no." />
-
-                </div>
-
-                <div class="form-group mb-4">
-                  <select name="fine_category" id="fineCategory" class="form-control"
-                    aria-label="Default select example">
-                    <option selected disabled>Fine category</option>
-                    <option>Not wearing helmet while riding motorbike</option>
-                    <option>Carrying passengers on the roof</option>
-                    <option>Carrying load beyond capacity</option>
-                    <option>Using vehicles for different purposes without permit</option>
-                    <option>Reckless driving</option>
-                    <option>Driving under the influence of alcohol</option>
-                    <option>Parking vehicles in public places in a haphazard manner</option>
-                    <option>Driving without licence or letting someone without licence drive</option>
-                    <option>Involvement in accidents or fleeing after accident</option>
-                    <option>Driving on the wrong lane</option>
-                    <option>Driving a public vehicle without route permit</option>
-                  </select>
-                </div>
-
-                <div class="form-outline mb-4">
-                  <input type="text" name="fine_box" id="fineBoxInput" class="form-control" placeholder="Fine amount" />
-                </div>
-
-                <div class="form-outline mb-4">
-                  <input type="text" name="notice" id="noticeInput" class="form-control" placeholder="Notice" />
-                </div>
-
-                <script>
-                  const fineCategory = document.getElementById("fineCategory");
-                  const fineBoxInput = document.getElementById("fineBoxInput");
-                  const noticeInput = document.getElementById("noticeInput");
-
-                  fineCategory.addEventListener("change", () => {
-                    const selectedCategory = fineCategory.value;
-                    let fineAmount = 0;
-                    let requiresNotice = false;
-
-                    switch (selectedCategory) {
-                      case "Not wearing helmet while riding motorbike":
-                        fineAmount = 500;
-                        requiresNotice = false;
-                        break;
-                      case "Carrying passengers on the roof":
-                        fineAmount = 1500;
-                        requiresNotice = false;
-                        break;
-                      case "Carrying load beyond capacity":
-                        fineAmount = 1000;
-                        break;
-                      case "Using vehicles for different purposes without permit":
-                        fineAmount = 500;
-                        break;
-                      case "Reckless driving":
-                        fineAmount = 1000;
-                        requiresNotice = true;
-                        break;
-                      case "Driving under the influence of alcohol":
-                        fineAmount = 500;
-                        requiresNotice = false;
-                        break;
-                      case "Parking vehicles in public places in a haphazard manner":
-                        fineAmount = 1000;
-                        break;
-                      case "Driving without licence or letting someone without licence drive":
-                        fineAmount = true;
-                        break;
-                      case "Involvement in accidents or fleeing after accident":
-                        fineAmount = 1500;
-                        requiresNotice = true;
-                        break;
-                      case "Driving on the wrong lane":
-                        fineAmount = 1500;
-                        requiresNotice = true;
-                        break;
-                      case "Driving a public vehicle without route permit":
-                        fineAmount = 1500;
-                        requiresNotice = true;
-                        break;
-                      default:
-                        fineAmount = 0;
-                    }
-
-                    fineBoxInput.value = fineAmount;
-                    noticeInput.value = requiresNotice ? "Attend the class and proceed to payment " : "Proceed to payment ";
-                  });
-                </script>
-
-
-                <div class="form-group mb-4">
-                  <select id="district_selection" class="form-control" name="location"
-                    aria-label="Default select example" placeholder="Location">
-                    <option selected>Select District</option>
-                    <option>Kathmandu</option>
-                    <option>Bhaktapur</option>
-                    <option>Lalitpur</option>
-
-                  </select>
-                </div>
-                <div class="form-group mb-4">
-                  <select name="traffic_station" id="traffic_station_selection" class="form-control"
-                    aria-label="Default select example" placeholder="Traffic station">
-                  </select>
-                </div>
-
-                <div class="form-outline mb-4">
-                  <input type="text" name="police_name" id="form3Example4cg" class="form-control mb-4 "
-                    placeholder="Traffic police Name" />
-
-
-                  <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-info btn-lg gradient-custom-4  text-light">Submit</button>
-                  </div>
-
-              </form>
-
-            </div>
-          </div>
         </div>
       </div>
     </div>
-  </div>
+  </nav>
+
+
+  <div class="alert alert-primary justify-content-center text-center" role="alert">
+    <b>E-Fine</b>
   </div>
 
+  <div class="container mt-5">
+    <div class="form-container">
+      <h2 class="form-title">E-Fine Form</h2>
+      <form action="create_pdf.php" method="POST" id="fineForm">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="name" class="form-label required-field">Name</label>
+              <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="email" class="form-label required-field">Email</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+          </div>
+                </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="date" class="form-label required-field">Date</label>
+              <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="vehicle_number" class="form-label required-field">Vehicle Number</label>
+              <input type="text" class="form-control" id="vehicle_number" name="vehicle_number" required>
+            </div>
+          </div>
+                </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="license_number" class="form-label required-field">License Number</label>
+              <input type="text" class="form-control" id="license_number" name="license_number" required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="fine_box" class="form-label required-field">Fine Amount (NPR)</label>
+              <input type="number" class="form-control" id="fine_box" name="fine_box" min="0" step="100" required>
+            </div>
+                </div>
+                </div>
+
+        <div class="form-group">
+          <label for="fine_category" class="form-label required-field">Description of Offense</label>
+          <textarea class="form-control" id="fine_category" name="fine_category" rows="3" required></textarea>
+                </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="location" class="form-label required-field">Location</label>
+              <input type="text" class="form-control" id="location" name="location" required>
+                </div>
+                </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="traffic_station" class="form-label required-field">Traffic Station</label>
+              <input type="text" class="form-control" id="traffic_station" name="traffic_station" required>
+                </div>
+                </div>
+                </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="police_name" class="form-label required-field">Police Name</label>
+              <input type="text" class="form-control" id="police_name" name="police_name" required>
+            </div>
+                  </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="notice" class="form-label required-field">Class</label>
+              <textarea class="form-control" id="notice" name="notice" rows="2"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="payment-options">
+          <h3 class="payment-title">Payment Options</h3>
+          <input type="hidden" id="chit_number" name="chit_number" value="<?php echo rand(100000, 999999); ?>">
+          <button type="button" id="payment-button" class="khalti-button">
+            <img src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.22.0.0.0/icons/khalti.png" alt="Khalti" class="khalti-logo">
+            Pay with Khalti
+          </button>
+        </div>
+
+        <div class="form-group mt-4">
+          <button type="submit" class="btn btn-submit">Generate E-Fine</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <div class="d-flex flex-column flex-sm-row justify-content-center pt-2" style="background-color: aliceblue;">
     <p class="mb-4">© 2025 TMS, All rights reserved.</p>
@@ -254,65 +291,33 @@ if (!isset($_SESSION['email'])) {
     </ul>
   </div>
   <script>
-    // get the HTML elements
-    //const fineCategory = document.getElementById("usertype");
-    const district_selection_input = document.getElementById('district_selection')
-    const traffic_station_selection_input = document.getElementById('traffic_station_selection')
-    // const fineBox = document.getElementById("form-outline mb-4");
-    // const fineAmountinput = document.getElementById("fineboxinput");
+    document.getElementById("myButton").addEventListener("click", function() {
+      window.location.href = "login.html";
+    });
 
-    // district selection
-    district_selection.addEventListener('change', (event) => {
-      clearSelectElement(traffic_station_selection_input)
-      const selected_district = event.target.value
-
-      switch (selected_district) {
-        case 'Kathmandu':
-          addOption(traffic_station_selection_input, 'Boudha', 'boudha')
-          addOption(traffic_station_selection_input, 'Chabahil', 'chabahil')
-          addOption(traffic_station_selection_input, 'Jorpati', 'jorpati')
-          addOption(traffic_station_selection_input, 'Gaushala', 'gaushala')
-          addOption(traffic_station_selection_input, 'Naya baneshwor', 'naya_baneshwor')
-          break;
-        case 'Lalitpur':
-          addOption(traffic_station_selection_input, 'Lagankhel', 'lagankhel')
-          addOption(traffic_station_selection_input, 'Jawalakhel', 'jawalakhel')
-          addOption(traffic_station_selection_input, 'Jhamsikhel', 'jhamsikhel')
-          addOption(traffic_station_selection_input, 'Satdobato', 'satdobato')
-          addOption(traffic_station_selection_input, 'lakuri bhanjyang', 'lakuri bhanjyang')
-          break;
-        case 'Bhaktapur':
-          addOption(traffic_station_selection_input, 'Sanothimi', 'sanothimi')
-          addOption(traffic_station_selection_input, 'Sagha', 'sagha')
-          addOption(traffic_station_selection_input, 'Nayathimi', 'nayathimi')
-          addOption(traffic_station_selection_input, 'Radhe Radhe', 'radhe_radhe')
-          addOption(traffic_station_selection_input, 'ekanta bato ', 'yakanta bato')
-
-          break;
-        default:
-          addOption(traffic_station_selection_input, 'Select district first', '')
-      }
-    })
-
-    function addOption(parentElement, text, value) {
-      const opt = document.createElement('option');
-      opt.innerHTML = text;
-      opt.value = value;
-      parentElement.appendChild(opt);
-    }
-
-    function clearSelectElement(selectElement) {
-      var length = selectElement.options.length;
-      for (i = length - 1; i >= 0; i--) {
-        selectElement.options[i] = null;
-      }
-    }
+    // Set today's date as the default value for the date field
+    document.getElementById('date').valueAsDate = new Date();
   </script>
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
+  
+  <!-- Khalti Integration -->
+  <script src="khalti-config.js"></script>
+  <script>
+    var checkout = new KhaltiCheckout(config);
+    var btn = document.getElementById("payment-button");
+    btn.onclick = function () {
+        // Get the fine amount from the form
+        var fineAmount = document.getElementById("fine_box").value;
+        // Khalti takes amount in paisa
+        var amount = fineAmount * 100;
+        
+        checkout.show({amount: amount});
+    }
+  </script>
 </body>
 
 </html>

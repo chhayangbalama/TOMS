@@ -61,6 +61,7 @@ $fullname = $_SESSION['fullname'];
               <li><a class="dropdown-item" href="trafficsign.php">Traffic Signs</a></li>
               <li><a class="dropdown-item" href="helpline.php">Traffic Helplines</a></li>
               <li><a class="dropdown-item" href="drivingexam.php">Model Question</a></li>
+              <li><a class="dropdown-item" href="quiz.php">Start Quiz</a></li>
               <hr class="dropdown-divider">
               <li><a class="dropdown-item" href="complain.html">Complain</a></li>
             </ul>
@@ -86,10 +87,10 @@ $fullname = $_SESSION['fullname'];
     <div class="col-ms-6">
       <h3><b>Notice</b></h3>
       <hr class="dropdown-divider"><br>
-      <a href="notice2.html"><h6>Metro traffic to manage street lights in the capital</h6></a>
-      <a href="notice4.html"><h6>Traffic Police Division collects over Rs 310 million revenue in fine</h6></a>
-      <a href="notice3.html"><h6>Precaution for Motorists</h6></a>
-      <a href="notice5.html"><h6>Important Notice</h6></a>
+      <a href="notice2.php"><h6>Metro traffic to manage street lights in the capital</h6></a>
+      <a href="notice4.php"><h6>Traffic Police Division collects over Rs 310 million revenue in fine</h6></a>
+      <a href="notice3.php"><h6>Precaution for Motorists</h6></a>
+      <a href="notice5.php"><h6>Important Notice</h6></a>
     </div>
   </div>
 

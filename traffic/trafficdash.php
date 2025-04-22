@@ -1,11 +1,10 @@
 <?php
-session_start(); // Start the session
-
-// Check if the user is logged in
-if (!isset($_SESSION['email'])) {
-    header("Location: login.html"); // Redirect to login page if not logged in
+session_start();
+if (!isset($_SESSION['fullname'])) {
+    header("Location: ../login.html");
     exit();
 }
+$fullname = $_SESSION['fullname'];
 ?>
 
 <!doctype html>
@@ -32,31 +31,33 @@ if (!isset($_SESSION['email'])) {
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg bg-light fixed-top">
+   <nav class="navbar navbar-expand-lg bg-light fixed-top">
     <div class="ps-5 justify-content-center align-items-center container-fluid">
       <a href="trafficdash.php">
         <img src="img/logo.jpg" class="rounded-circle" alt="logo" style="height:65px;">
         <a class="navbar-brand" href="trafficdash.php">TMS</a>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ps-2">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="trafficdash.php">Home</a>
+            <a class="nav-link active" href="trafficdash.php">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="about.php">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="efine.php">E-Chit</a>
+            <a class="nav-link" href="efine.php">E-chit</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="notice1.php">Notice</a>
+            <a class="nav-link " href="notice1.php">Notice</a>
           </li>
-          <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               More
             </a>
@@ -67,16 +68,16 @@ if (!isset($_SESSION['email'])) {
             </ul>
           </li>
         </ul>
+
+        <div class="d-flex align-items-center">
+          <div class="profile-section">
+            <!-- <img src="img/user.jpg" alt="Profile" class="profile-avatar"> -->
+            <span class="profile-name">👮‍♂️<?php echo $_SESSION['fullname']; ?></span>
+          </div>
+          <a href="logout.php" class="btn btn-danger btn-sm">Logout</a>
+        </div>
       </div>
     </div>
-    <div class="d-flex align-items-center">
-      <div class="profile-section">
-  <span class="profile-name">👮‍♂️<?php echo $_SESSION['fullname']; ?></span>
-  </div>
-  <a href="logout.php">
-    <button type="button" class="btn btn-danger btn-sm">Logout</button>
-  </a>
-</div>
   </nav>
 
   <div class="alert alert-primary justify-content-center text-center" role="alert">
@@ -130,7 +131,7 @@ if (!isset($_SESSION['email'])) {
     <div class="gap-3 row gap-lg-5 justify-content-center">
       <article class="card col-lg-3">
         <div class="gap-2 card-body vstack">
-          <a href="trafficsign.html">
+          <a href="trafficsign.php">
             <img class="card-img-top" src="img/traffic.jpg" alt="Card image cap">
             <h3 class="card-title fw-bold">Traffic Signs</h3>
           </a>
@@ -139,7 +140,7 @@ if (!isset($_SESSION['email'])) {
       </article>
       <article class="card col-lg-3">
         <div class="gap-2 card-body vstack">
-          <a href="trafficrule.html">
+          <a href="trafficrule.php">
             <img class="card-img-top" src="img/trafficrules.jpg" alt="Card image cap">
             <h3 class="card-title fw-bold">Traffic Rules</h3>
           </a>
